@@ -4,12 +4,12 @@ import com.dojo.kata.Ingredients.Ingredient;
 import com.dojo.kata.Visitors.VisitorPescetarien;
 import com.dojo.kata.Visitors.VisitorVegetarien;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
+ * Kebab Kata réalisé par Sacha LHOPITAL et Yoan LAFAYE DE MICHEAUX en pair programming
  * Created by Sachouw on 23/05/2017.
  */
 public class Kebab {
