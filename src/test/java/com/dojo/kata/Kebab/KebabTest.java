@@ -36,7 +36,7 @@ public class KebabTest {
 
         kebabCarnivore = new Kebab(oignon, sauceAlgerienne, tomate, agneau);
         kebabVegetarien = new Kebab(sauceAlgerienne, tomate, oignon, fromage);
-        kebabPoisson = new Kebab(thon, sauceAlgerienne, fromage, oignon, compte);
+        kebabPoisson = new Kebab(thon, sauceAlgerienne, fromage, oignon, compte, oignon);
     }
 
     //Vegetarien
@@ -94,22 +94,16 @@ public class KebabTest {
     }
 
     //Enlever des oignons
-    @Test
-    public void doublerFromage_devrait_ne_rien_faire_si_pas_fromage() {
-        assertThat(kebabCarnivore.quantiteFromage()).isEqualTo(0);
-        kebabCarnivore.doublerFromage();
-        assertThat(kebabCarnivore.quantiteFromage()).isEqualTo(0);
-    }
 
     @Test
-    public void doublerFromage_devrait_doubler_toutes_portions_fromage() {
-        assertThat(kebabVegetarien.quantiteFromage()).isEqualTo(1);
-        kebabVegetarien.doublerFromage();
-        assertThat(kebabVegetarien.quantiteFromage()).isEqualTo(2);
+    public void remove_devrait_supprimer_ingredient() {
+        assertThat(kebabVegetarien.getIngredients().size()).isEqualTo(4);
+        kebabVegetarien.remove(oignon);
+        assertThat(kebabVegetarien.getIngredients().size()).isEqualTo(3);
 
-        assertThat(kebabPoisson.quantiteFromage()).isEqualTo(2);
-        kebabPoisson.doublerFromage();
-        assertThat(kebabPoisson.quantiteFromage()).isEqualTo(4);
+        assertThat(kebabPoisson.getIngredients().size()).isEqualTo(6);
+        kebabPoisson.remove(oignon);
+        assertThat(kebabPoisson.getIngredients().size()).isEqualTo(4);
     }
 
 

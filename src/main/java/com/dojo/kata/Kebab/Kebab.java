@@ -60,4 +60,14 @@ public class Kebab {
         }
         return count;
     }
+
+    public void remove(Ingredient ingredient) {
+        List<Ingredient> ingredientsToRemove = new LinkedList<>();
+        for(Ingredient ingredient1 : ingredients) {
+            if(ingredient1.equals(ingredient)) {
+                ingredientsToRemove.add(ingredient1);
+            }
+        }
+        ingredients.removeAll(ingredientsToRemove);
+    }
 }
