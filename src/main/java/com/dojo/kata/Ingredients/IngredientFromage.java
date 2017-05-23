@@ -3,15 +3,15 @@ package com.dojo.kata.Ingredients;
 /**
  * Created by Sachouw on 23/05/2017.
  */
-public class IngredientPoisson extends Ingredient {
+public class IngredientFromage extends Ingredient {
 
-    public IngredientPoisson(String nom) {
+    public IngredientFromage(String nom) {
         super(nom);
     }
 
     @Override
     public boolean isVegetarien() {
-        return false;
+        return true;
     }
 
     @Override
@@ -21,6 +21,8 @@ public class IngredientPoisson extends Ingredient {
 
     @Override
     public boolean isDoublable() {
-        return false;
+        return true;
     }
+
+
 }

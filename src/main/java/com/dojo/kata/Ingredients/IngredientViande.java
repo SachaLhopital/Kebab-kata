@@ -18,4 +18,9 @@ public class IngredientViande extends Ingredient {
     public boolean isPescetarien() {
         return false;
     }
+
+    @Override
+    public boolean isDoublable() {
+        return false;
+    }
 }

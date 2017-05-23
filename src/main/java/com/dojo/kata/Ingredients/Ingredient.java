@@ -13,4 +13,5 @@ public abstract class Ingredient {
 
     public abstract boolean isVegetarien();
     public abstract boolean isPescetarien();
+    public abstract boolean isDoublable();
 }

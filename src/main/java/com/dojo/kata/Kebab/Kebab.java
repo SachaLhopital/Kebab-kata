@@ -4,6 +4,7 @@ import com.dojo.kata.Ingredients.Ingredient;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -14,15 +15,11 @@ public class Kebab {
     private List<Ingredient> ingredients;
 
     public Kebab(Ingredient... ingredients) {
-        this.ingredients = new ArrayList<>(Arrays.asList(ingredients));
+        this.ingredients = new LinkedList<>(Arrays.asList(ingredients));
     }
 
     public List<Ingredient> getIngredients() {
         return ingredients;
-    }
-
-    public void setIngredients(List<Ingredient> ingredients) {
-        this.ingredients = ingredients;
     }
 
     public boolean isVegetarien() {
@@ -41,5 +38,26 @@ public class Kebab {
             }
         }
         return true;
+    }
+
+    public void doublerFromage() {
+        int size = ingredients.size();
+        for(int i = 0 ; i < size; i++) {
+            if(ingredients.get(i).isDoublable()) {
+                ingredients.add(i+1, ingredients.get(i));
+                i++;
+                size++;
+            }
+        }
+    }
+
+    public int quantiteFromage() {
+        int count = 0;
+        for(Ingredient ingredient : getIngredients()) {
+            if(ingredient.isDoublable()) {
+                count++;
+            }
+        }
+        return count;
     }
 }

@@ -1,9 +1,6 @@
 package com.dojo.kata.Kebab;
 
-import com.dojo.kata.Ingredients.Ingredient;
-import com.dojo.kata.Ingredients.IngredientNormal;
-import com.dojo.kata.Ingredients.IngredientPoisson;
-import com.dojo.kata.Ingredients.IngredientViande;
+import com.dojo.kata.Ingredients.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,7 +20,8 @@ public class KebabTest {
     private IngredientNormal tomate;
     private IngredientNormal oignon;
     private IngredientViande agneau;
-    private IngredientNormal fromage;
+    private IngredientFromage fromage;
+    private IngredientFromage compte;
 
     @Before
     public void setUp() {
@@ -33,12 +31,15 @@ public class KebabTest {
         tomate = new IngredientNormal("tomate");
         oignon = new IngredientNormal("oignon");
         agneau = new IngredientViande("agneau");
-        fromage = new IngredientNormal("fromage");
+        fromage = new IngredientFromage("fromage");
+        compte = new IngredientFromage("compté");
 
         kebabCarnivore = new Kebab(oignon, sauceAlgerienne, tomate, agneau);
-        kebabVegetarien = new Kebab(sauceAlgerienne, tomate, oignon);
-        kebabPoisson = new Kebab(thon, sauceAlgerienne, oignon, fromage);
+        kebabVegetarien = new Kebab(sauceAlgerienne, tomate, oignon, fromage);
+        kebabPoisson = new Kebab(thon, sauceAlgerienne, fromage, oignon, compte);
     }
+
+    //Vegetarien
 
     @Test
     public void isVegetarien_devrait_retourner_vrai_pour_kebabVegetarien() {
@@ -55,6 +56,8 @@ public class KebabTest {
         assertThat(kebabPoisson.isVegetarien()).isFalse();
     }
 
+    //Pescetarien
+
     @Test
     public void isPescetarien_devrait_retourner_faux_pour_kebabCarnivore() {
         assertThat(kebabCarnivore.isPescetarien()).isFalse();
@@ -69,4 +72,45 @@ public class KebabTest {
     public void isPescetarien_devrait_retourner_true_pour_kebabPoisson() {
         assertThat(kebabPoisson.isPescetarien()).isTrue();
     }
+
+    //Doubler le fromage
+
+    @Test
+    public void doublerFromage_devrait_ne_rien_faire_si_pas_fromage() {
+        assertThat(kebabCarnivore.quantiteFromage()).isEqualTo(0);
+        kebabCarnivore.doublerFromage();
+        assertThat(kebabCarnivore.quantiteFromage()).isEqualTo(0);
+    }
+
+    @Test
+    public void doublerFromage_devrait_doubler_toutes_portions_fromage() {
+        assertThat(kebabVegetarien.quantiteFromage()).isEqualTo(1);
+        kebabVegetarien.doublerFromage();
+        assertThat(kebabVegetarien.quantiteFromage()).isEqualTo(2);
+
+        assertThat(kebabPoisson.quantiteFromage()).isEqualTo(2);
+        kebabPoisson.doublerFromage();
+        assertThat(kebabPoisson.quantiteFromage()).isEqualTo(4);
+    }
+
+    //Enlever des oignons
+    @Test
+    public void doublerFromage_devrait_ne_rien_faire_si_pas_fromage() {
+        assertThat(kebabCarnivore.quantiteFromage()).isEqualTo(0);
+        kebabCarnivore.doublerFromage();
+        assertThat(kebabCarnivore.quantiteFromage()).isEqualTo(0);
+    }
+
+    @Test
+    public void doublerFromage_devrait_doubler_toutes_portions_fromage() {
+        assertThat(kebabVegetarien.quantiteFromage()).isEqualTo(1);
+        kebabVegetarien.doublerFromage();
+        assertThat(kebabVegetarien.quantiteFromage()).isEqualTo(2);
+
+        assertThat(kebabPoisson.quantiteFromage()).isEqualTo(2);
+        kebabPoisson.doublerFromage();
+        assertThat(kebabPoisson.quantiteFromage()).isEqualTo(4);
+    }
+
+
 }

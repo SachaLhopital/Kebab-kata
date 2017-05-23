@@ -18,4 +18,9 @@ public class IngredientNormal extends Ingredient {
     public boolean isPescetarien() {
         return true;
     }
+
+    @Override
+    public boolean isDoublable() {
+        return false;
+    }
 }
