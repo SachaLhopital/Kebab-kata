@@ -1,5 +1,7 @@
 package com.dojo.kata.Kebab;
 
+import com.dojo.kata.Ingredients.Ingredient;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,10 +27,7 @@ public class Kebab {
 
     public boolean isVegetarien() {
         for(Ingredient ingredient : getIngredients()) {
-            if(ingredient.isViande()) {
-                return false;
-            }
-            if(ingredient.isPoisson()) {
+            if(!ingredient.isVegetarien()) {
                 return false;
             }
         }
@@ -37,7 +36,7 @@ public class Kebab {
 
     public boolean isPescetarien() {
         for(Ingredient ingredient : getIngredients()) {
-            if(ingredient.isViande()) {
+            if(!ingredient.isPescetarien()) {
                 return false;
             }
         }

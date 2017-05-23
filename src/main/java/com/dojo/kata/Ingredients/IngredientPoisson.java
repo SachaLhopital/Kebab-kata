@@ -1,4 +1,4 @@
-package com.dojo.kata.Kebab;
+package com.dojo.kata.Ingredients;
 
 /**
  * Created by Sachouw on 23/05/2017.
@@ -6,11 +6,16 @@ package com.dojo.kata.Kebab;
 public class IngredientPoisson extends Ingredient {
 
     public IngredientPoisson(String nom) {
-        super(nom, false);
+        super(nom);
     }
 
     @Override
-    public boolean isPoisson() {
+    public boolean isVegetarien() {
+        return false;
+    }
+
+    @Override
+    public boolean isPescetarien() {
         return true;
     }
 }

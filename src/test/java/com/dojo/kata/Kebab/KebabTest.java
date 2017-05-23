@@ -1,5 +1,9 @@
 package com.dojo.kata.Kebab;
 
+import com.dojo.kata.Ingredients.Ingredient;
+import com.dojo.kata.Ingredients.IngredientNormal;
+import com.dojo.kata.Ingredients.IngredientPoisson;
+import com.dojo.kata.Ingredients.IngredientViande;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,26 +18,26 @@ public class KebabTest {
     private Kebab kebabVegetarien;
     private Kebab kebabPoisson;
 
-    private Ingredient thon;
-    private Ingredient pommeDeTerre;
-    private Ingredient tomate;
-    private Ingredient oignon;
-    private Ingredient agneau;
-    private Ingredient fromage;
+    private IngredientPoisson thon;
+    private IngredientNormal sauceAlgerienne;
+    private IngredientNormal tomate;
+    private IngredientNormal oignon;
+    private IngredientViande agneau;
+    private IngredientNormal fromage;
 
     @Before
     public void setUp() {
 
         thon = new IngredientPoisson("poisson");
-        pommeDeTerre = new Ingredient("pommeDeTerre", false);
-        tomate = new Ingredient("tomate", false);
-        oignon = new Ingredient("oignon", false);
-        agneau = new Ingredient("agneau", true);
-        fromage = new Ingredient("fromage", false);
+        sauceAlgerienne = new IngredientNormal("sauceAlgerienne");
+        tomate = new IngredientNormal("tomate");
+        oignon = new IngredientNormal("oignon");
+        agneau = new IngredientViande("agneau");
+        fromage = new IngredientNormal("fromage");
 
-        kebabCarnivore = new Kebab(oignon, pommeDeTerre, tomate, agneau);
-        kebabVegetarien = new Kebab(pommeDeTerre, tomate, oignon);
-        kebabPoisson = new Kebab(thon, pommeDeTerre, oignon, fromage);
+        kebabCarnivore = new Kebab(oignon, sauceAlgerienne, tomate, agneau);
+        kebabVegetarien = new Kebab(sauceAlgerienne, tomate, oignon);
+        kebabPoisson = new Kebab(thon, sauceAlgerienne, oignon, fromage);
     }
 
     @Test
@@ -65,6 +69,4 @@ public class KebabTest {
     public void isPescetarien_devrait_retourner_true_pour_kebabPoisson() {
         assertThat(kebabPoisson.isPescetarien()).isTrue();
     }
-
-
 }
