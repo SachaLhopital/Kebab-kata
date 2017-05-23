@@ -11,16 +11,11 @@ public class IngredientPoisson extends Ingredient {
 
     @Override
     public boolean isVegetarien() {
-        return false;
+        return visiteur.visit(this);
     }
 
     @Override
     public boolean isPescetarien() {
-        return true;
-    }
-
-    @Override
-    public boolean isDoublable() {
-        return false;
+        return visiteur.visit(this);
     }
 }

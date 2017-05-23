@@ -1,6 +1,8 @@
 package com.dojo.kata.Kebab;
 
 import com.dojo.kata.Ingredients.Ingredient;
+import com.dojo.kata.Visitors.VisitorPescetarien;
+import com.dojo.kata.Visitors.VisitorVegetarien;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,6 +26,7 @@ public class Kebab {
 
     public boolean isVegetarien() {
         for(Ingredient ingredient : getIngredients()) {
+            ingredient.accept(new VisitorVegetarien());
             if(!ingredient.isVegetarien()) {
                 return false;
             }
@@ -33,6 +36,7 @@ public class Kebab {
 
     public boolean isPescetarien() {
         for(Ingredient ingredient : getIngredients()) {
+            ingredient.accept(new VisitorPescetarien());
             if(!ingredient.isPescetarien()) {
                 return false;
             }
@@ -40,10 +44,10 @@ public class Kebab {
         return true;
     }
 
-    public void doublerFromage() {
+    public void doublerIngredient(Ingredient ingredient) {
         int size = ingredients.size();
         for(int i = 0 ; i < size; i++) {
-            if(ingredients.get(i).isDoublable()) {
+            if(ingredients.get(i).equals(ingredient)) {
                 ingredients.add(i+1, ingredients.get(i));
                 i++;
                 size++;
@@ -51,10 +55,10 @@ public class Kebab {
         }
     }
 
-    public int quantiteFromage() {
+    public int quantiteIngredient(Ingredient ingredient) {
         int count = 0;
-        for(Ingredient ingredient : getIngredients()) {
-            if(ingredient.isDoublable()) {
+        for(Ingredient ingredient1 : getIngredients()) {
+            if(ingredient.equals(ingredient1)) {
                 count++;
             }
         }

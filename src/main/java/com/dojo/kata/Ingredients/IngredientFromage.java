@@ -1,5 +1,7 @@
 package com.dojo.kata.Ingredients;
 
+import com.dojo.kata.Visitors.Visitor;
+
 /**
  * Created by Sachouw on 23/05/2017.
  */
@@ -11,18 +13,11 @@ public class IngredientFromage extends Ingredient {
 
     @Override
     public boolean isVegetarien() {
-        return true;
+        return visiteur.visit(this);
     }
 
     @Override
     public boolean isPescetarien() {
-        return true;
+        return visiteur.visit(this);
     }
-
-    @Override
-    public boolean isDoublable() {
-        return true;
-    }
-
-
 }
